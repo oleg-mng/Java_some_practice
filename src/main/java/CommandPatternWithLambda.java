@@ -1,3 +1,5 @@
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +12,7 @@ public class CommandPatternWithLambda {
         int k = 31;
         enum q {on, off}
         ;
+
         List<Runnable> commands = new ArrayList<>();
         commands.add(() -> System.out.println("Command 1 running"));
         commands.add(() -> System.out.println("Command 2 running"));
@@ -17,17 +20,14 @@ public class CommandPatternWithLambda {
 
         Enum<q> s = l < k ? q.on : q.off;
         System.out.println(s);
-
         executeCommands(commands);
     }
 
+        private static void executeCommands (List < Runnable > com) {
+            for (Runnable runnable : com) {
+                runnable.run();
 
-    private static void executeCommands(List<Runnable> com) {
-        for (Runnable runnable : com) {
-            runnable.run();
-
+            }
         }
-    }
-
 }
 
